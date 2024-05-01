@@ -20,7 +20,7 @@ export function getRouter() {
     router.get('/user/filteredBy', userController.getAllFiltered);
     router.post('/user', userController.create);
     router.put('/user', userController.update);
-    router.delete('/user/:id', userController.delete);
+    //router.delete('/user/:id', userController.delete);
 
     router.get('/course', courseController.getAll);
     router.get('/course/:id', courseController.getOne);

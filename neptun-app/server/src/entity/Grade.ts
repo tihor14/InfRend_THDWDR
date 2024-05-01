@@ -10,7 +10,7 @@ export class Grade {
     @ManyToOne(() => Student, student => student.grades)
     student: Student;
 
-    @Column()
+    @ManyToOne(() => Course)
     course: Course;
 
     @Column()

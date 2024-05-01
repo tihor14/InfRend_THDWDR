@@ -1,23 +1,40 @@
 import { AppDataSource } from "./data-source";
 import express from "express";
 import { getRouter } from "./routes";
+import { Instructor } from "./entity/Instructor";
 
-async function main() {
-    try {
-        await AppDataSource.initialize();
+AppDataSource.initialize().then(async () => {
+    const instructor = new Instructor();
+    instructor.name = "Teszt";
+    instructor.department = "Valahol";
+    instructor.email = "asd@gmail.com";
+    
 
-        const app = express();
+    await AppDataSource.manager.save(instructor);
+    console.log("Instructor is saved.");
 
-        app.use(express.json());
+    AppDataSource.destroy();
+}).catch(error => {
+    console.log(error);
+    AppDataSource.destroy();
+});
 
-        app.use('/api', getRouter());
+// async function main() {
+//     try {
+//         await AppDataSource.initialize();
 
-        app.listen(3000, () => {
-            console.log('Listening on port 3000 ...');
-        });
-    } catch (err) {
-        console.error(err);
-    }
-}
+//         const app = express();
 
-main();
+//         app.use(express.json());
+
+//         app.use('/api', getRouter());
+
+//         app.listen(3000, () => {
+//             console.log('Listening on port 3000 ...');
+//         });
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }
+
+// main();

@@ -1,1 +1,98 @@
-/* You can add global styles to this file, and also import other style files */
+html{
+    --mainColor: #900C3F;
+    --darkColor: #64082B;
+    --lightColor: #fbfbfb;
+    --hoverColor: #eac5d3;
+  }
+  html, body {
+    min-height: 100%;
+    height: auto;
+    margin: 0;
+  }
+  a {
+    cursor: pointer;
+  }
+  
+  .form-check-input{
+    cursor: pointer;
+  }
+  .form-check-input:checked{
+    background-color: var(--mainColor);
+    border: 0;
+    box-shadow: none !important;
+  }
+  .form-check-input:focus, .label::after, label.form-check-label:focus, .form-check-input::after, .form-check-input:not(:disabled):not(.disabled):active:focus {
+    color: var(--darkColor);
+    outline: 0;
+    border: 0;
+    box-shadow: 0 0 0.2rem 0.1rem var(--mainColor);
+  }
+  
+  .btn-custom{
+    background-color: var(--mainColor) !important;
+    color: var(--lightColor);
+  }
+  
+  .btn-custom:hover{
+    color: var(--lightColor);
+    box-shadow: inset 0 0 0 20rem var(--darkColor);
+  }
+  
+  .bg-custom{
+    background-color: var(--mainColor);
+  }
+  
+  .text-custom{
+    color: var(--mainColor);
+  }
+  
+  .link-custom, .link-custom:active{
+    color: var(--mainColor);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .link-custom:visited {
+    color: var(--darkColor);
+  }
+  
+  .link-custom:hover{
+    color: var(--darkColor);
+    letter-spacing: 1pt;
+  }
+  
+  .card-custom {
+    border-bottom: 10px solid var(--mainColor);
+  }
+  
+  .hoverable:hover{
+    background-color: var(--hoverColor);
+  }
+  
+  .form-control:focus {
+    border-color: var(--hoverColor);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--hoverColor);
+  }
+  
+  input[type="date"]::-webkit-clear-button {
+    display: none;
+  }
+  
+  .highlighted{
+    font-weight: 500;
+  }
+  
+  .ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948;
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442;
+  }
+  
+  .toast-danger, .toast-success {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  
