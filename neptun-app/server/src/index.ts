@@ -18,9 +18,8 @@ async function main() {
 
       app.use('/api', getRouter());
 
-      app.listen(3000, async () => {
+      app.listen(3000, () => {
           console.log('Listening on port 3000 ...');
-          await createTablesIfNotExist(); // Tábla létrehozása, ha még nem létezik
       });
   } catch (err) {
       console.error(err);
@@ -29,21 +28,7 @@ async function main() {
 
 main();
 
-async function createTablesIfNotExist() {
-  const tableExistsQuery = `SELECT COUNT(*) as count FROM information_schema.tables WHERE table_schema = 'neptunDB2' AND table_name = 'user';`;
 
-  try {
-    const result = await AppDataSource.query(tableExistsQuery);
-    const count = result[0].count;
-
-    if (count === 0) {
-      // Tábla még nem létezik, létrehozzuk
-      await AppDataSource.query(""/* create table query */);
-    }
-  } catch (error) {
-    console.error('Error checking if table exists:', error);
-  }
-}
 // AppDataSource.initialize().then(async () => {
     
 //     // const user = new User();
