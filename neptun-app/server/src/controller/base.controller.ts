@@ -1,12 +1,8 @@
-import { AppDataSource } from "../data-source";
-import { User } from "../entity/User";
-import { Repository } from 'typeorm';
-import { Request, Response } from 'express';
+import { Repository } from "typeorm";
 
 export abstract class Controller {
     repository: Repository<any>;
 
-    //Get all entities from the given repository (of given type)
     getAll = async (req, res) => {
         try {
             const entities = await this.repository.find();
@@ -16,20 +12,6 @@ export abstract class Controller {
         }
     };
 
-    //Get all entities from the given repository with filter criteria given as query params
-    getAllFiltered = async (req, res) => {
-        try {
-            const filterParams = req.query;
-            const entities = await this.repository.find({
-                where: filterParams
-            });
-            res.json(entities);
-        } catch (err) {
-            this.handleError(res, err);
-        }
-    };
-    
-    //Get one entity by id, given as part of the requested route
     getOne = async (req, res) => {
         try {
             const id = req.params.id;
@@ -45,7 +27,6 @@ export abstract class Controller {
         }
     };
 
-    //Create the entity specified in request body
     create = async (req, res) => {
         try {
             const entity = this.repository.create(req.body as object);
@@ -58,7 +39,6 @@ export abstract class Controller {
         }
     };
 
-    //Update the entity specified in request body, if it already exists (otherwise response 404)
     update = async (req, res) => {
         try {
             const entity = this.repository.create(req.body as object);
@@ -75,7 +55,6 @@ export abstract class Controller {
         }
     };
 
-    //Delete the entity with the id specified as part of the request route, if it already exists (otherwise response 404)
     delete = async (req, res) => {
         try {
             const id = req.params.id;
@@ -91,7 +70,6 @@ export abstract class Controller {
         }
     };
 
-    //Universal error handler, sends back status and error message
     handleError = (res, err, status = 500, message = 'Internal server error') => {
         if (err) {
             console.error(err);

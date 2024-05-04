@@ -7,7 +7,7 @@ export class Grade {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Student, student => student.grades)
+    @ManyToOne(() => Student, student => student.grades, { onDelete: 'CASCADE' , eager: true})
     student: Student;
 
     @ManyToOne(() => Course)

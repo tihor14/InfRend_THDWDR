@@ -3,6 +3,7 @@ export interface CourseDTO{
     name: string;
     subject: null | SubjectDTO;
     studentsEnrolled: null | StudentDTO[];
+    grades: null | GradeDTO[];
 }
 export interface GradeDTO{
     id: number;

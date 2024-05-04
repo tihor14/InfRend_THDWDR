@@ -4,7 +4,7 @@ import { User } from "./entity/User"
 import { Grade } from "./entity/Grade"
 import { Instructor } from "./entity/Instructor"
 import { Student } from "./entity/Student"
-import { Subject } from "typeorm/persistence/Subject"
+import { Subject } from "./entity/Subject"
 import { Course } from "./entity/Course"
 
 export const AppDataSource = new DataSource({
@@ -13,7 +13,7 @@ export const AppDataSource = new DataSource({
     port: 3306,
     username: "root",
     password: "root",
-    database: "neptunDB",
+    database: "neptunDB2",
     synchronize: true,
     logging: true,
     entities: [User, Course, Grade, Instructor, Student, Subject],
