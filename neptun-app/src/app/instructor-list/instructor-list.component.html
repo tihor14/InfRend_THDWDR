@@ -5,6 +5,7 @@
             <th>Név</th>
             <th>Tanszék</th>
             <th>Email</th>
+            <th>Műveletek</th>
         </tr>
     </thead>
     <tbody>
@@ -14,6 +15,14 @@
                 <td>{{ instructor.name }}</td>
                 <td>{{ instructor.department }}</td>
                 <td>{{ instructor.email }}</td>
+                <td>
+                    <button class="btn btn-outline-primary"
+                        (click)="goToTaughtSubjects(instructor.id)">Oktatott tárgyak</button>
+                        <button class="btn btn-outline-primary"
+                        (click)="goToInstructorForm(instructor.id)">Módosítás</button>
+                    <button class="btn btn-outline-danger"
+                        (click)="deleteInstructor(instructor)">Törlés</button>
+                </td>
             </tr>
         }
     </tbody>

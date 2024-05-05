@@ -14,6 +14,7 @@ export class InstructorService {
   }
 
   getOne(id: number) {
+    console.log(this.http.get<InstructorDTO>('/api/instructor/' + id));
     return this.http.get<InstructorDTO>('/api/instructor/' + id);    
   }
 

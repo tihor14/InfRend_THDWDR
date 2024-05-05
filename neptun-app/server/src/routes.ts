@@ -52,6 +52,7 @@ export function getRouter() {
 
     router.get('/subject', subjectController.getAll);
     router.get('/subject/:id', subjectController.getOne);
+    router.get('/subject/taught-by/:instructorid', subjectController.subjectsOfInstructor);
     // router.get('/subject/filteredBy', subjectController.getAllFiltered);
     router.post('/subject', subjectController.create);
     router.put('/subject', subjectController.update);

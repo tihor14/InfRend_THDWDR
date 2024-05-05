@@ -10,9 +10,9 @@ export class Subject {
     @Column()
     name: string;
 
-    @ManyToOne(() => Instructor, instructor => instructor.subjectTaught, {cascade: true})
+    @ManyToOne(() => Instructor, instructor => instructor.subjectTaught, {eager: true})
     instructor: Instructor;
 
-    @OneToMany(() => Course, course => course.subject, {cascade: true})
+    @OneToMany(() => Course, course => course.subject, {eager: true})
     course: Course[];
 }

@@ -1,18 +1,20 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { InstructorService } from '../services/instructor.service';
-import { InstructorDTO } from '../../../models';
+import { SubjectService } from '../services/subject.service';
 import { Router } from '@angular/router';
+import { InstructorDTO } from '../../../models';
 
 @Component({
-  selector: 'app-instructor-list',
+  selector: 'app-instructor-subjects',
   standalone: true,
   imports: [],
-  templateUrl: './instructor-list.component.html',
-  styleUrl: './instructor-list.component.css'
+  templateUrl: './instructor-subjects.component.html',
+  styleUrl: './instructor-subjects.component.css'
 })
-export class InstructorListComponent implements OnInit{
+export class InstructorSubjectsComponent {
   instructorService = inject(InstructorService);
-
+  subjectService = inject(SubjectService);
+  
   router = inject(Router);
 
   instructors: InstructorDTO[] = [];

@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Oktattott tárgy(ak)</th>
+            <th>Kurzusok</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(instructor of instructors; track $index) {
+            <tr>
+                <td>{{ instructor.id }}</td>
+                <td>{{ instructor.name }}</td>
+                <td>{{ instructor.department }}</td>
+                <td>{{ instructor.email }}</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
