@@ -25,6 +25,7 @@ export function getRouter() {
     router.get('/course', courseController.getAll);
     router.get('/course/:id', courseController.getOne);
     // router.get('/course/filteredBy', courseController.getAllFiltered);
+    // router.get('/course/list-by/:subjectId', courseController.coursesOfSubject);
     router.post('/course', courseController.create);
     router.put('/course', courseController.update);
     //router.delete('/course/:id', courseController.delete);
@@ -41,7 +42,7 @@ export function getRouter() {
     // router.get('/instructor/filteredBy', instructorController.getAllFiltered);
     router.post('/instructor', instructorController.create);
     router.put('/instructor', instructorController.update);
-    //router.delete('/instructor/:id', instructorController.delete);
+    router.delete('/instructor/:id', instructorController.delete);
 
     router.get('/student', studentController.getAll);
     router.get('/student/:id', studentController.getOne);
@@ -52,9 +53,10 @@ export function getRouter() {
 
     router.get('/subject', subjectController.getAll);
     router.get('/subject/taught-by/:instructorId', subjectController.subjectsOfInstructor);
+    // router.get('/subject/list-by/:subjectId', subjectController.coursesOfSubject);
     // router.get('/subject/filteredBy', subjectController.getAllFiltered);
     router.post('/subject', subjectController.create);
-    //router.delete('/subject/:id', subjectController.delete);
+    router.delete('/subject/:id', subjectController.delete);
 
     
     return router;

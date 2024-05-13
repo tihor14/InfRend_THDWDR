@@ -32,11 +32,8 @@ export class InstructorFormComponent implements OnInit{
 
   ngOnInit(): void {
     const id = this.activedRoute.snapshot.params['id'];
-    console.log("isntructor-form.components.ts");
-    console.log(id);
     if (id) {
       this.isNewInstructor = false;
-      console.log(this.instructorService.getOne(id));
       this.instructorService.getOne(id).subscribe({
         next: (instructor) => this.instructorForm.patchValue(instructor),
         error: (err) => {

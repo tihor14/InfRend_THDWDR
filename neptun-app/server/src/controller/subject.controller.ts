@@ -31,4 +31,37 @@ export class SubjectController extends Controller {
         this.handleError(res, err);
     }
 };
+
+// coursesOfSubject = async (req, res) => {
+//     try {
+//         const subjectId = req.params.subjectId;
+
+//         const courses = await this.repository.find({
+//             where: {
+//                 subject: { id: subjectId }
+//             }
+//         });
+
+//         res.json(courses);
+//     } catch (err) {
+//         this.handleError(res, err);
+//     }
+// };
+// coursesOfSubject = async (req, res) => {
+//     try {
+//         const subjectId = req.params.subjectId;
+
+//         const subject = await this.repository.findOne(subjectId);
+
+//         if (!subject) {
+//             return this.handleError(res, null, 404, 'Subject not found.');
+//         }
+//         console.log(subject);
+//         console.log(subjectId);
+//         res.json(subject.course);
+//     } catch (err) {
+//         this.handleError(res, err);
+//     }
+// };
+
 }
