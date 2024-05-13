@@ -20,6 +20,6 @@ export class Course {
     @JoinTable()
     studentsEnrolled!: Student[];
     
-    @OneToMany(() => Grade, grade => grade.course, { cascade: true })
-    grades: Grade[];
+    @OneToMany(() => Grade, grade => grade.course)
+    grades!: Grade[];
 }

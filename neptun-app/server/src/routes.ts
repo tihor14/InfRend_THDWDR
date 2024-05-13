@@ -49,7 +49,7 @@ export function getRouter() {
     // router.get('/student/filteredBy', studentController.getAllFiltered);
     router.post('/student', studentController.create);
     router.put('/student', studentController.update);
-    //router.delete('/student/:id', studentController.delete);
+    router.delete('/student/:id', studentController.delete);
 
     router.get('/subject', subjectController.getAll);
     router.get('/subject/taught-by/:instructorId', subjectController.subjectsOfInstructor);
