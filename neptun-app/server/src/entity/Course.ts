@@ -1,5 +1,5 @@
 // Course.ts
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, OneToMany, JoinTable } from "typeorm";
 import { Subject } from "./Subject";
 import { Student } from "./Student";
 import { Grade } from "./Grade";
@@ -7,16 +7,18 @@ import { Grade } from "./Grade";
 @Entity()
 export class Course {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column()
-    name: string;
+    name!: string;
 
-    @ManyToOne(() => Subject, subject => subject.course , { onDelete: 'CASCADE' , eager: true})
-    subject: Subject;
+    @ManyToOne(() => Subject, subject => subject.course , {eager: true})
+    @JoinTable()
+    subject!: Subject;
 
     @ManyToMany(() => Student, student => student.coursesTaken, { eager: true })
-    studentsEnrolled: Student[];
+    @JoinTable()
+    studentsEnrolled!: Student[];
     
     @OneToMany(() => Grade, grade => grade.course, { cascade: true })
     grades: Grade[];

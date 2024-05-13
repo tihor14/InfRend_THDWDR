@@ -5,14 +5,14 @@ import { Course } from "./Course";
 @Entity()
 export class Grade {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @ManyToOne(() => Student, student => student.grades, { onDelete: 'CASCADE' , eager: true})
-    student: Student;
+    student!: Student;
 
     @ManyToOne(() => Course)
-    course: Course;
+    course!: Course;
 
     @Column()
-    grade: number;
+    grade!: number;
 }

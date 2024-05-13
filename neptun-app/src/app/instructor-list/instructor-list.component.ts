@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { InstructorService } from '../services/instructor.service';
 import { InstructorDTO } from '../../../models';
 import { Router } from '@angular/router';
+import { SubjectService } from '../services/subject.service';
 
 @Component({
   selector: 'app-instructor-list',
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class InstructorListComponent implements OnInit{
   instructorService = inject(InstructorService);
+
+  subjectService = inject(SubjectService);
 
   router = inject(Router);
 
@@ -29,6 +32,7 @@ export class InstructorListComponent implements OnInit{
 
   goToTaughtSubjects(id: number){
     this.router.navigate([ '/instructor-subjects', id ]);
+    
   }
 
   deleteInstructor(instructor: InstructorDTO) {

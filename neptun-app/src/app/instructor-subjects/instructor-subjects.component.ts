@@ -1,50 +1,41 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { InstructorService } from '../services/instructor.service';
 import { SubjectService } from '../services/subject.service';
-import { Router } from '@angular/router';
-import { InstructorDTO } from '../../../models';
+import { ActivatedRoute, Router } from '@angular/router';
+import { InstructorDTO, SubjectDTO } from '../../../models';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-instructor-subjects',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './instructor-subjects.component.html',
   styleUrl: './instructor-subjects.component.css'
 })
-export class InstructorSubjectsComponent {
-  instructorService = inject(InstructorService);
-  subjectService = inject(SubjectService);
-  
-  router = inject(Router);
+export class InstructorSubjectsComponent implements OnInit{
+  formBuilder = inject(FormBuilder);
 
-  instructors: InstructorDTO[] = [];
+  instructorService = inject(InstructorService);
+  
+  subjectService = inject(SubjectService);
+
+  subjects: SubjectDTO[] = [];
+
+  activedRoute = inject(ActivatedRoute);
+
+  subjectForm = this.formBuilder.group<SubjectDTO>({
+    id: 0,
+    name: '',
+    instructor: null,
+    course: null
+  });
 
   ngOnInit(): void {
-    this.instructorService.getAll().subscribe({
-      next: instructors => this.instructors = instructors,
-      error: err => console.error(err)
-    });
-  }
-  goToInstructorForm(id: number) {
-    this.router.navigate([ '/instructor-edit', id ]);
+    //this.instructorService.getAll().subscribe(instructors => this.instructors = instructors);
+    const id = this.activedRoute.snapshot.params['id'];
+    this.subjectService.subjectsOfInstructor(id)
+    .subscribe(subjects => this.subjects = subjects);
   }
 
-  goToTaughtSubjects(id: number){
-    this.router.navigate([ '/instructor-subjects', id ]);
-  }
-
-  deleteInstructor(instructor: InstructorDTO) {
-    this.instructorService.delete(instructor.id).subscribe({
-      next: () => {
-        const index = this.instructors.indexOf(instructor);
-        if (index > -1) {
-          this.instructors.splice(index, 1);
-        }
-      },
-      error: (err) => {
-        // TODO: notification
-        console.error(err);
-      }
-    });
-  }
+  
 }

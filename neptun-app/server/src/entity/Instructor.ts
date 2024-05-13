@@ -4,17 +4,17 @@ import { Subject } from "./Subject";
 @Entity()
 export class Instructor {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column()
-    name: string;
+    name!: string;
 
     @Column()
-    department: string;
+    department!: string;
 
     @Column({ nullable: true })
-    email: string;
+    email!: string;
 
     @OneToMany(() => Subject, subject => subject.instructor)
-    subjectTaught: Subject[];
+    subjectTaught!: Subject[];
 }

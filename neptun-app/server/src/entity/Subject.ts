@@ -1,18 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinTable } from "typeorm";
 import { Instructor } from "./Instructor";
 import { Course } from "./Course";
 
 @Entity()
 export class Subject {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column()
-    name: string;
+    name!: string;
 
     @ManyToOne(() => Instructor, instructor => instructor.subjectTaught, {eager: true})
-    instructor: Instructor;
+    @JoinTable()
+    instructor!: Instructor;
 
-    @OneToMany(() => Course, course => course.subject, {eager: true})
-    course: Course[];
+    @OneToMany(() => Course, course => course.subject)
+    course!: Course[];
 }

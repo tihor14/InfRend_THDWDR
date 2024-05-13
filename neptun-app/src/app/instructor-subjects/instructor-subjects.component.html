@@ -6,13 +6,10 @@
         </tr>
     </thead>
     <tbody>
-        @for(instructor of instructors; track $index) {
+        @for(subject of subjects; track $index) {
             <tr>
-                <td>{{ instructor.id }}</td>
-                <td>{{ instructor.name }}</td>
-                <td>{{ instructor.department }}</td>
-                <td>{{ instructor.email }}</td>
-                
+                <td>{{ subject.id }}</td>
+                <td>{{ subject.name }}</td>                
             </tr>
         }
     </tbody>
