@@ -51,7 +51,7 @@ export class InstructorFormComponent implements OnInit{
       this.instructorService.create(instructor).subscribe({
         next: () => {
           // TODO: notification
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/instructor');
         },
         error: (err) => {
           console.error(err);
@@ -62,7 +62,7 @@ export class InstructorFormComponent implements OnInit{
       this.instructorService.update(instructor).subscribe({
         next: () => {
           // TODO: notification
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/instructor');
         },
         error: (err) => {
           console.error(err);

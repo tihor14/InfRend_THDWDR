@@ -24,6 +24,35 @@ async function main() {
   } catch (err) {
       console.error(err);
   }
+    // try {
+    //     await AppDataSource.initialize();
+
+    //     // Először töröljük az összes meglévő kapcsolatot a Course és a Student között
+    //     await AppDataSource.manager.query('DELETE FROM course_students_enrolled_student');
+
+    //     // Minden kurzushoz hozzáadjuk az összes diákot
+    //     const courses = await AppDataSource.manager.find(Course);
+    //     const students = await AppDataSource.manager.find(Student);
+
+    //     for (const course of courses) {
+    //         course.studentsEnrolled = students;
+    //         await AppDataSource.manager.save(course);
+    //     }
+
+    //     // Minden diákhoz hozzáadjuk az összes kurzust
+    //     for (const student of students) {
+    //         student.coursesTaken = courses;
+    //         await AppDataSource.manager.save(student);
+    //     }
+
+    //     console.log("A Course és Student közötti kapcsolatok újrainicializálása sikeresen megtörtént.");
+
+    //     // Adatforrás lezárása
+    //     AppDataSource.destroy();
+    // } catch (error) {
+    //     console.error("Hiba történt a kapcsolatok újrainicializálása közben:", error);
+    //     AppDataSource.destroy();
+    // }
 }
 
 main();

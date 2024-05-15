@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { SubjectService } from '../services/subject.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CourseDTO, InstructorDTO, SubjectDTO } from '../../../models';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CourseService } from '../services/course.service';
@@ -60,6 +60,8 @@ export class InstructorSubjectsComponent implements OnInit{
     const subject = this.subjectForm.value as SubjectDTO;
     console.log(subject);
     this.showSubjectForm = false;
+    const id=this.route.snapshot.params['id'];
+    console.log(id);
     this.subjectService.create(subject).subscribe({
       next: () => {
         // TODO: notification

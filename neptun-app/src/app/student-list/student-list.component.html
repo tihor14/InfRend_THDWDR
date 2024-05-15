@@ -4,8 +4,8 @@
             <th>Diák kódja</th>
             <th>Név</th>
             <th>Csoport</th>
-            <th>Felvett kurzusok</th>
-            <th>Jegyek</th>
+            <!-- <th>Felvett kurzusok</th>
+            <th>Jegyek</th> -->
             <th>Műveletek</th>
         </tr>
     </thead>
@@ -28,8 +28,10 @@
                 <td>
                     <button class="btn btn-outline-primary"
                         (click)="goToStudentForm(student.id)">Módosítás</button>
-                    <button class="btn btn-outline-danger"
-                        (click)="deleteStudent(student)">Törlés</button>
+                    <button class="btn btn-outline-primary"
+                        (click)="goToStudentSubjects(student.id)">Tárgyak</button>
+                    <!-- <button class="btn btn-outline-danger"
+                        (click)="deleteStudent(student)">Törlés</button> -->
                 </td>
             </tr>
         }

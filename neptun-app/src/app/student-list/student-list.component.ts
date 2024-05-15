@@ -1,8 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { StudentService } from '../services/student.service';
 import { Router } from '@angular/router';
-import { StudentDTO } from '../../../models';
+import { CourseDTO, StudentDTO, SubjectDTO } from '../../../models';
 import { Student } from '../../../server/src/entity/Student';
+import { SubjectService } from '../services/subject.service';
+import { CourseService } from '../services/course.service';
 
 @Component({
   selector: 'app-student-list',
@@ -13,10 +15,13 @@ import { Student } from '../../../server/src/entity/Student';
 })
 export class StudentListComponent implements OnInit {
   studentService = inject(StudentService);
-
+  subjectService = inject(SubjectService);
+  courseService = inject(CourseService);
   router = inject(Router);
 
   students: StudentDTO[] = [];
+  subjects: SubjectDTO[] = [];
+  courses: CourseDTO[] = [];
 
   ngOnInit(): void {
     this.studentService.getAll().subscribe({
@@ -41,5 +46,10 @@ export class StudentListComponent implements OnInit {
         console.error(err);
       }
     });
+  }
+  goToStudentSubjects(id: number) {
+    // this.courseService.getCoursesOfStudent(id)
+    //   .subscribe(courses => console.log(courses));
+    this.studentService.getOne(id).subscribe(student => console.log(student));
   }
 }

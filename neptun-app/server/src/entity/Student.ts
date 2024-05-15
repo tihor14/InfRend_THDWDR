@@ -13,7 +13,9 @@ export class Student {
     @Column()
     group!: string;
 
-    @ManyToMany(() => Course, course => course.studentsEnrolled, {cascade: true})
+    // @ManyToMany(() => Course, course => course.studentsEnrolled)
+    // @JoinTable({ name: 'course_students_enrolled_student' })
+    @ManyToMany(type => Course, { cascade: true })
     @JoinTable()
     coursesTaken!: Course[];
 

@@ -25,10 +25,12 @@ export function getRouter() {
     router.get('/course', courseController.getAll);
     router.get('/course/:id', courseController.getOne);
     // router.get('/course/filteredBy', courseController.getAllFiltered);
-    // router.get('/course/list-by/:subjectId', courseController.coursesOfSubject);
+    router.get('/course/list-by/:subjectId', courseController.coursesOfSubject);
+    router.get('/course/learned-by/:studentId', courseController.getCoursesOfStudent);
+    router.get('/course/students/:courseId', courseController.getCoursesOfStudent);
     router.post('/course', courseController.create);
     router.put('/course', courseController.update);
-    //router.delete('/course/:id', courseController.delete);
+    router.delete('/course/:id', courseController.delete);
 
     router.get('/grade', gradeController.getAll);
     router.get('/grade/:id', gradeController.getOne);

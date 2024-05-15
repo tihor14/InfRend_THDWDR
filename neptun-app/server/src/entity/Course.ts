@@ -16,9 +16,9 @@ export class Course {
     @JoinTable()
     subject!: Subject;
 
-    @ManyToMany(() => Student, student => student.coursesTaken, { eager: true })
-    @JoinTable()
-    studentsEnrolled!: Student[];
+    // @ManyToMany(() => Student, student => student.coursesTaken, { eager: true })
+    // @JoinTable({ name: 'course_students_enrolled_student' })
+    // studentsEnrolled!: Student[];
     
     @OneToMany(() => Grade, grade => grade.course)
     grades!: Grade[];
