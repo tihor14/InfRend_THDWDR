@@ -36,7 +36,8 @@ export function getRouter() {
     router.get('/grade/:id', gradeController.getOne);
     // router.get('/grade/filteredBy', gradeController.getAllFiltered);
     router.post('/grade', gradeController.create);
-    router.put('/grade', gradeController.update);
+    // router.get('/grade/averageByCourse/:courseId', gradeController.getAverageGradeByCourse);
+    // router.get('/grade/averageByStudent', gradeController.getAverageGradeByStudent);
     //router.delete('/grade/:id', gradeController.delete);
 
     router.get('/instructor', instructorController.getAll);
